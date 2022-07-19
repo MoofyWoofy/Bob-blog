@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TagButton from "@components/TagButton.astro";
+import { Frontmatter, getAllUniqueTags } from "src/misc"
+
+const allPosts = await Astro.glob<Frontmatter>('../../pages/blog/posts/*.md');
+const posts = allPosts.filter((post) => post.frontmatter.draft != true);
+
+const uniqueTags = getAllUniqueTags(posts);
+---
+
+<BaseLayout title="All Tags" activeLink="tags">
+  <div class="w-3/4 lg:w-2/5 mx-auto">
+
+    <h1 class="text-center text-4xl pb-1 font-semibold bg-gradient-orange text-transparent bg-clip-text mb-8">All tags</h1>
+
+    <ul class="flex flex-wrap gap-2">
+      {uniqueTags.map(tag =>
+      <TagButton tagName={tag} />)}
+    </ul>
+
+  </div>
+</BaseLayout>
+
+<style>
+</style>

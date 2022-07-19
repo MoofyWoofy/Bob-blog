@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title: string,
+  description: string,
+}
+const { title, description } = Astro.props as Props;
+const url = import.meta.env.SITE + Astro.canonicalURL.pathname.slice(1);
+---
+
+<title>{title}</title>
+<meta charset="UTF-8">
+
+<meta name="author" content={"NAME"}>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="blog">
+<meta name="description" content={description}>
+
+<!-- Robot.txt -->
+<meta name="robots" content="index,follow">
+<meta name="Googlebot" content="index,follow">
+<meta name="AdsBot-Google" content="index,follow">
+
+<meta property="og:site_name" content={url}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={url}>
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content={url}>
+<meta name="application-name" content={title}>
+
+<meta name="apple-mobile-web-app-title" content={title}>
+<meta name="summary" content="Blog">
+
+<script is:inline>
+  if (localStorage.theme === 'night' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.querySelector('html').setAttribute('data-theme', 'night');
+  } else {
+    document.querySelector('html').setAttribute('data-theme', 'cmyk');
+  }
+</script>

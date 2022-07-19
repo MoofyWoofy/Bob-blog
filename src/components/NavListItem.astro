@@ -1,0 +1,28 @@
+---
+import { capitalizeString } from "src/misc";
+export interface Props {
+  navLink: string,
+  activeLink: string,
+  icon: string,
+}
+
+const { navLink, activeLink, icon } = Astro.props as Props;
+const url = Astro.site.pathname + (navLink === 'home' ? '' : `${navLink}`);
+---
+
+<li class:list={[{ 'current-page' : navLink===activeLink
+  }, "after:block after:mx-auto after:h-[0.15em] after:bottom-0 after:w-0 after:bg-green-700 dark:after:bg-amber-400 after:transition-[all_ease_in_out_300ms] after:mt-1 hover:after:w-full"
+  ]}>
+  <a href={url} tabindex={navLink===activeLink? -1 : null} class:list={[{'current-page': navLink===activeLink
+    }, "flex hover:text-black dark:hover:text-white p-1" ]}>
+    <Fragment set:html={icon} />
+    <span class="pl-2 pointer-events-none">{capitalizeString(navLink)}</span>
+  </a>
+</li>
+
+<style>
+  .current-page {
+    color: hsl(var(--sf));
+    pointer-events: none;
+  }
+</style>

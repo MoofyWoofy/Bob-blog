@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PostCard from "@components/PostCard.astro";
+import { Frontmatter, sortDateDescending } from "src/misc";
+import config from "src/config";
+
+const allPosts = await Astro.glob<Frontmatter>('../pages/blog/posts/*.md');
+const posts = sortDateDescending(allPosts.filter((post) => post.frontmatter.draft != true && post.frontmatter.tags.includes('featured')));
+---
+
+<BaseLayout title="home page" activeLink="home">
+
+	<section class="flex flex-col sm:flex-row justify-center max-w-[90%] w-[52rem] mx-auto gap-12 mb-48">
+		<img src="//unsplash.it/200" alt="avatar" class="rounded-md h-fit self-center justify-self-center">
+		<div class="flex flex-col flex-wrap flex-grow">
+			<h1
+				class="text-center bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent text-5xl mb-[0.7em]">
+				Hi there, I'm <span class="font-bold">Melvin</span></h1>
+			<p class="text-center">
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+				Quidem cum hic, odio dignissimos iure, est inventore rerum deleniti itaque amet dolorem suscipit nemo ex
+				tempora.
+				Tempora fugiat veniam impedit porro.</p>
+				<div class="flex flex-wrap justify-center gap-5 mt-4">
+					{config.social.map(ele => <a class="w-8 h-8 flex scale-1 hover:scale-125 transition-[scale]" href={ele.link} target="_blank" rel="noreferrer noopener"><Fragment set:html={ele.svg}/></a> )}
+				</div>
+		</div>
+	</section>
+
+
+	<section>
+		<h2
+			class="mx-auto text-center mb-8 bg-gradient-orange text-transparent bg-clip-text text-4xl border-b-2 border-red-300 font-semibold w-fit">
+			Featured Articles
+		</h2>
+
+		<div class="flex flex-wrap flex-col justify-center gap-12">
+			{posts.map(post =>
+			<PostCard content={post} />)}
+		</div>
+	</section>
+</BaseLayout>
