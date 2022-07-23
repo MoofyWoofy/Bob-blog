@@ -15,8 +15,22 @@ module.exports = {
           },
         },
       },
-      backgroundImage:{
-        "gradient-orange":"linear-gradient(to right, #f97316, #e11d48)",
+      backgroundImage: {
+        "gradient-orange": "linear-gradient(to right, #f97316, #e11d48)",
+      },
+      fontFamily: {
+        mono: [
+          "'Fira Code'",
+          "'JetBrains Mono'",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "Liberation Mono",
+          "Courier New",
+          "monospace",
+        ],
       },
     },
   },

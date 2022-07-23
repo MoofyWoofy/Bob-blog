@@ -1,11 +1,11 @@
 ---
-import pageSize from "src/config.js";
+import config from "src/config.js";
 export interface Props {
   tagName: string
 }
 
 const { tagName } = Astro.props;
-const { tagNames, tagColors } = pageSize;
+const { tagNames, tagColors } = config;
 
 const tagColor = tagNames?.[tagName] ?? 'default'
 

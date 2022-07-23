@@ -2,18 +2,16 @@
 import BaseHead from "./BaseHead.astro";
 import NavListItem from "@components/NavListItem.astro";
 import pageSize from "src/config.js";
+import config from "src/config.js";
 export interface Props {
   title: string,
   description?: string,
   activeLink?: string,
 }
 
-
 const { title, description = "My blog", activeLink = null } = Astro.props as Props;
-
 const { navLinks } = pageSize;
-
-const today = new Date(); //! Redundant 
+const { metaData: { authorName } } = config;
 ---
 
 <html lang="en">
@@ -88,8 +86,8 @@ const today = new Date(); //! Redundant
     </svg>
 
     <footer class="border-t px-4 py-6 mt-6">
-      <p class="text-center text-sm">&copy; {today.getFullYear()} Melvin</p>
-      <p class="text-center text-xs">Built with <a class="text-cyan-600 hover:text-black" href="https://astro.build"
+      <p class="text-center text-sm">&copy; {new Date().getFullYear()} {authorName}</p>
+      <p class="text-center text-xs">Built with <a class="text-cyan-600 hover:text-black dark:hover:text-white" href="https://astro.build"
           target="_blank" rel="noreferrer noopener">Astro</a></p>
     </footer>
   </body>
@@ -134,7 +132,7 @@ const today = new Date(); //! Redundant
   }
 
   /* Logo Animation */
-  #svgName {
+  header svg > path, #svgName {
     stroke-dasharray: 844;
     stroke-dashoffset: 844;
     animation: svgNameAnimation 5s forwards 500ms ease-in-out;

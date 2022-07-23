@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import PostCard from "@components/PostCard.astro";
-import { Frontmatter, sortDateDescending, getAllUniqueTags, capitalizeString } from "../../../misc";
+import ArticleCard from "@components/ArticleCard.astro";
+import { Frontmatter, sortDateDescending, getAllUniqueTags } from "src/misc";
 import { MarkdownInstance, Page } from "astro";
 import config from "src/config.js";
 
@@ -35,11 +35,11 @@ const { tag } = Astro.params;
 ---
 
 <BaseLayout title="test">
-  <h1 class="text-center text-3xl font-semibold bg-gradient-orange text-transparent bg-clip-text mb-8">
-    {capitalizeString(tag.toString()) + " TO-DO: Change color"}</h1>
+  <h1 class="text-center text-3xl font-semibold text-secondary mb-8">
+    #{tag.toString()}</h1>
 
   <div class="flex flex-wrap flex-col justify-center gap-12">
     {page.data.map(post =>
-    <PostCard content={post} />)}
+    <ArticleCard content={post} />)}
   </div>
 </BaseLayout>
