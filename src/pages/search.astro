@@ -36,7 +36,7 @@ import { Frontmatter, sortDateDescending } from 'src/misc';
     keys: ["title", "description"]
   };
 
-  const posts = await fetch("./search.json").then(resp => resp.json());
+  const posts = await fetch("../search.json").then(resp => resp.json());
   const fuse = new Fuse(posts, options);
   const inputBox = document.querySelector<HTMLInputElement>('#searchBox');
 

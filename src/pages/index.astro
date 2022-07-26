@@ -4,7 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import config from "src/config";
 import { Frontmatter, sortDateDescending } from "src/misc";
 
-const allPosts = await Astro.glob<Frontmatter>('../pages/blog/posts/*.md');
+const allPosts = await Astro.glob<Frontmatter>('../pages/blog/articles/*.md');
 const posts = sortDateDescending(allPosts.filter((post) => post.frontmatter.draft != true && post.frontmatter.tags.includes('featured')));
 const { metaData: { authorName }, social } = config;
 ---

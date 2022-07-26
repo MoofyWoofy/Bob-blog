@@ -14,4 +14,5 @@ export default defineConfig({
       wrap:true,
     },
   },
+  trailingSlash:'always',
 });
