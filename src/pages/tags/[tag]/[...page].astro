@@ -22,7 +22,7 @@ export async function getStaticPaths({ paginate }) {
 
     return paginate(filteredPosts, {
       params: { tag },
-      pageSize: config.pageSize ?? 5
+      pageSize: config.pageSize ?? 5,
     });
   });
 }
@@ -39,8 +39,8 @@ const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1)
     #{tag.toString()}</h1>
 
   <div class="flex flex-wrap flex-col justify-center gap-12">
-    {page.data.map(post =>
-    <ArticleCard content={post} />)}
+    {page.data.map((post, index) =>
+    <ArticleCard content={post} lazyLoading={index > 2} />)}
   </div>
 
   <div class="btn-group justify-center mt-12">

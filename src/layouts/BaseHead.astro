@@ -7,6 +7,7 @@ export interface Props {
 const { title, description } = Astro.props as Props;
 const url = import.meta.env.SITE + Astro.canonicalURL.pathname.slice(1);
 const { metaData: { authorName, category, summary, keywords } } = config;
+const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1);
 ---
 
 <title>{title}</title>
@@ -41,6 +42,8 @@ const { metaData: { authorName, category, summary, keywords } } = config;
 
 <meta name="apple-mobile-web-app-title" content={title} />
 <meta name="summary" content={summary} />
+
+<link rel="shortcut icon" href={baseSite + "/favicon.ico"} type="image/x-icon">
 
 <script is:inline>
   if (localStorage.theme === 'night' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
