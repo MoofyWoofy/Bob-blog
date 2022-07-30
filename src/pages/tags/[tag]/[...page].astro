@@ -34,7 +34,7 @@ const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1)
 
 ---
 
-<BaseLayout title="test">
+<BaseLayout title={`#${tag}`}>
   <h1 class="text-center text-3xl font-semibold text-secondary mb-8">
     #{tag.toString()}</h1>
 
