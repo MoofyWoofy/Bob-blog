@@ -40,3 +40,4 @@ jobs:
           # `./dist` is the default Astro build directory.
           # If you changed that, update it here too.
           publish_dir: ./dist
+          force_orphan: true

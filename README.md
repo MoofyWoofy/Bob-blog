@@ -81,3 +81,19 @@ For client search it uses fusejs, if you wish to change the options it is in `sr
 Set your site URL and base site
 - inside `astro.config.mjs`
 - Change site & base site option, if it the base site is root you can either delete it or set it to base: "`/`"
+
+## Adding new post
+A template to follow is in `src/pages/blog/articles/template.md`
+```
+---
+layout: required
+title: required
+date: required
+image?: optional
+imageDescription?: optional
+tags: required;
+description: required;
+draft?: optional;
+---
+```
+
