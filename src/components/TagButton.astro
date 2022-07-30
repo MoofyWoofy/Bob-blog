@@ -7,12 +7,11 @@ export interface Props {
 const { tagName } = Astro.props;
 const { tagNames, tagColors } = config;
 
-const tagColor = tagNames?.[tagName] ?? 'default'
-
+const tagColor = tagNames?.[tagName] ?? 'default';
 ---
 
 <a class="p-[clamp(0.25rem,_0.25em,_0.5em)_0.5em] rounded-md text-stone-600 hover:text-stone-800 dark:text-stone-300 dark:hover:text-stone-100"
-  style={`--tag-bg: ${tagColors[tagColor] + '1a' };--tag-prefix: ${tagColors[tagColor]};`} href={`${Astro.site.pathname}tags/${tagName}/`}>{tagName}</a>
+  style={`--tag-bg: ${tagColors[tagColor] + '1a' };--tag-prefix: ${tagColors[tagColor]};`} href={`${import.meta.env.BASE_URL}tags/${tagName}/`}>{tagName}</a>
 
 <style>
   a {

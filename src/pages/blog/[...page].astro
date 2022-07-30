@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ArticleCard from "@components/ArticleCard.astro";
+import Pagination from "@components/Pagination.astro";
 import { Frontmatter, sortDateDescending } from "src/misc";
 import { MarkdownInstance, Page } from "astro";
 import config from "src/config";
 
 export interface Props {
-  page: Page<MarkdownInstance<Frontmatter>>;
+  page: Page<MarkdownInstance<Frontmatter>>,
 }
 
 export async function getStaticPaths({ paginate }) {
@@ -16,7 +17,6 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props as Props;
-const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1)
 ---
 
 <BaseLayout title="Blog" activeLink="blog">
@@ -29,14 +29,5 @@ const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1)
     <ArticleCard content={post} />)}
   </div>
 
-  <div class="btn-group justify-center mt-12">
-    {page.currentPage !== 1 && page.currentPage !== 2? <a href={`${baseSite}/blog/`} class="btn">1</a> : null}
-
-    {page.url.prev ? <a class="btn" href={baseSite + page.url.prev}>{page.currentPage - 1}</a> : null}
-    <a href={baseSite + page.url.current} class="btn btn-active btn-disabled">{page.currentPage}</a>
-    {page.url.next ? <a class="btn" href={baseSite + page.url.next}>{page.currentPage + 1}</a> : null}
-
-    {page.currentPage !== page.lastPage && page.currentPage + 1 !== page.lastPage? <a
-      href={`${baseSite}/blog/${page.lastPage}/`} class="btn">{page.lastPage}</a> : null}
-  </div>
+  <Pagination page={page} dir={"blog"} />
 </BaseLayout>

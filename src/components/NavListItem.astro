@@ -7,7 +7,8 @@ export interface Props {
 }
 
 const { navLink, activeLink, icon } = Astro.props as Props;
-const url = Astro.site.pathname + (navLink === 'home' ? '' : `${navLink}/`);
+const baseSite = import.meta.env.BASE_URL;
+const url = baseSite + (navLink === 'home' ? '' : `${navLink}/`);
 ---
 
 <li class:list={[{ 'current-page' : navLink===activeLink

@@ -5,7 +5,8 @@ export interface Props {
   description: string,
 }
 const { title, description } = Astro.props as Props;
-const url = import.meta.env.SITE + Astro.canonicalURL.pathname.slice(1);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const url = canonicalURL.href;
 const { metaData: { authorName, category, summary, keywords } } = config;
 const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1);
 ---
