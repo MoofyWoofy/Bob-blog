@@ -8,7 +8,7 @@ const { title, description } = Astro.props as Props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const url = canonicalURL.href;
 const { metaData: { authorName, category, summary, keywords } } = config;
-const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1);
+const baseSite = import.meta.env.BASE_URL
 ---
 
 <title>{title}</title>
@@ -44,7 +44,7 @@ const baseSite = Astro.site.pathname.slice(0, Astro.site.pathname.length - 1);
 <meta name="apple-mobile-web-app-title" content={title} />
 <meta name="summary" content={summary} />
 
-<link rel="shortcut icon" href={baseSite + "/favicon.ico"} type="image/x-icon">
+<link rel="shortcut icon" href={baseSite + "favicon.ico"} type="image/x-icon">
 
 <script is:inline>
   if (localStorage.theme === 'night' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
