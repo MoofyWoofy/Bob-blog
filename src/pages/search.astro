@@ -53,11 +53,12 @@ import BaseLayout from "@layouts/BaseLayout.astro";
             ${result.item.tags.map(tag => `<div class="badge badge-outline">${tag}</div>`).join('')}
           </div>
           <div class="card-actions justify-end">
-            <a href="${result.item.url}" class="btn btn-primary">Read more</a>
+            <a href="${result.item.url}" class="btn btn-primary animation-none" style="animation: none;">Read more</a>
           </div>
         </div>
       </div>
       `);
+      console.log(html);
     }
     document.querySelector('#results').innerHTML = html;
   })

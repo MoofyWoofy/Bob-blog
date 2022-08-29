@@ -64,6 +64,7 @@ navLinks: [
     summary: "My personal blog", // required
     category: "Blog", // required
     keywords: ["Blog", "Astro"], // required
+    icon: "favicon.ico", // required
   },
 ```
 Adding name

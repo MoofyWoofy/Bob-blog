@@ -92,7 +92,7 @@ const { metaData: { authorName } } = config;
     <footer class="border-t px-4 py-6 mt-6">
       <p class="text-center text-sm">&copy; {new Date().getFullYear()} {authorName}</p>
       <p class="text-center text-xs">Built with <a class="text-cyan-600 hover:text-black dark:hover:text-white"
-          href="https://astro.build" target="_blank" rel="noreferrer noopener">Astro</a></p>
+          href="https://astro.build" target="_blank" rel="noreferrer noopener">{Astro.generator}</a></p>
     </footer>
   </body>
 
@@ -120,7 +120,7 @@ const { metaData: { authorName } } = config;
 
   /* Mobile Navigation */
   @media (max-width:640px) {
-    ul {
+    ul#primary-nav {
       position: fixed;
       inset: 0 0 0 30%;
       flex-direction: column;
@@ -131,11 +131,11 @@ const { metaData: { authorName } } = config;
       backdrop-filter: blur(2rem);
     }
 
-    ul[data-visible=true] {
+    ul#primary-nav[data-visible=true] {
       transform: translateX(0);
     }
 
-    label {
+    label#nav-toggle {
       display: grid;
     }
   }
@@ -143,6 +143,9 @@ const { metaData: { authorName } } = config;
   /* Logo & Theme SVG color */
   header path {
     fill: hsl(var(--fill-color));
+  }
+  header polygon{
+    fill: hsl(var(--er));
   }
 
 
