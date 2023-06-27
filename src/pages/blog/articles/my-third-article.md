@@ -2,7 +2,7 @@
 layout: "@layouts/ArticleLayout.astro"
 title: My Third Article
 date: 17 July 2022
-image: /Bob-blog/images/my-third-article/cardimage.jpg
+image: /images/my-third-article/cardimage.jpg
 tags:
   - third
   - featured
