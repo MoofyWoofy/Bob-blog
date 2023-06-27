@@ -1,4 +1,4 @@
-# Astro Bob's blog
+# Astro CodeF blog
 
 A responsive, personal blog template, built with Astro and Tailwind CSS.
 
@@ -27,28 +27,13 @@ All commands are run from the root of the project, from a terminal:
 ## Getting Started
 
 inside `src/config.js`
-- navLinks: all links for navigation
 - pageSize: pagination size
-- social: to display social icons on home page
 - metaData: for SEO
 
   below is an example
 
 ```js
-navLinks: [
-    {
-      link: "link to page and nav name", // required
-      icon: "svg icon for link", // optional
-    },
-  ],
   pageSize: 5,
-  social: [
-    {
-      link: "link to social", // required
-      svg: "svg for social icon", // required
-      sr: "For screen readers", // optional
-    },
-  ],
   metaData: {
     authorName: "your name", // required
     summary: "My personal blog", // required
@@ -57,18 +42,6 @@ navLinks: [
     icon: "favicon.ico", // required
   },
 ```
-Adding name
-- create a SVG with your name
-- open `src/layouts/BaseLayout.astro`
-- inside the header, under the logo comment, replace the SVG with yours
-
-Adding image
-- create a SVG with your name
-- open `src/pages/index.astro`
-- change the image src
-
-For client search it uses fusejs, if you wish to change the options it is in `src/pages/search.astro`
-
 Set your site URL and base site
 - inside `astro.config.mjs`
 - Change site & base site option, if it the base site is root you can either delete it or set it to base: "`/`"
