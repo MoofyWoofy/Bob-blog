@@ -6,17 +6,16 @@ export interface Frontmatter {
   date: string;
   image?: string;
   imageDescription?: string;
-  tags: Array<string>;
   description: string;
   draft?: boolean;
 }
 
 export function sortDateDescending(arg: MarkdownInstance<Frontmatter>[]) {
-  return arg.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-}
-
-export function getAllUniqueTags(arg: MarkdownInstance<Frontmatter>[]) {
-  return Array.from(new Set(arg.map((e) => e.frontmatter.tags).flat()).values());
+  return arg.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() -
+      new Date(a.frontmatter.date).getTime()
+  );
 }
 
 export function capitalizeString(arg: string) {

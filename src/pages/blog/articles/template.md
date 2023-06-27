@@ -5,8 +5,6 @@ title: template
 date: 00 July 2022
 image: /Bob-blog/images/...
 imageDescription: template text
-tags:
-  - featured
 draft: true
 ---
 

@@ -6,11 +6,10 @@ A responsive, personal blog template, built with Astro and Tailwind CSS.
 
 ## Features
 
-- A full featured blog with tagging
+- A blog
 - Dark mode and light mode with daisyUI
 - Site configuration
 - Supports draft page
-- Pagination for blog and tags page
 - SEO friendly
 - Client-Side search
 
@@ -29,8 +28,6 @@ All commands are run from the root of the project, from a terminal:
 
 inside `src/config.js`
 - navLinks: all links for navigation
-- tagNames: assign tag colors to which tag name
-- tagColors: all tag colors
 - pageSize: pagination size
 - social: to display social icons on home page
 - metaData: for SEO
@@ -44,13 +41,6 @@ navLinks: [
       icon: "svg icon for link", // optional
     },
   ],
-  tagNames: {
-    featured: "orange", // optional
-  },
-  tagColors: {
-    orange: "#EA4E28", // optional
-    default: "#3CA5EA", // required
-  },
   pageSize: 5,
   social: [
     {
@@ -92,7 +82,6 @@ title: required
 date: required
 image?: optional
 imageDescription?: optional
-tags: required;
 description: required;
 draft?: optional;
 ---

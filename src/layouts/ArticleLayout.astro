@@ -1,41 +1,59 @@
 ---
-import { MarkdownInstance } from "astro";
 import { Frontmatter } from "src/misc";
 import BaseLayout from "./BaseLayout.astro";
-import TagButton from "@components/TagButton.astro";
 
 export interface Props {
   content: Frontmatter;
 }
 
 const { content } = Astro.props as Props;
-const { title, image, imageDescription, tags, description } = content
+const { title, image, imageDescription, description } = content;
 const date = new Date(content.date);
-
 ---
 
 <BaseLayout title={title} description={description}>
+  <h1
+    class="text-3xl md:text-5xl 2xl:text-6xl mb-[0.8em] font-extrabold mx-auto w-fit"
+  >
+    {title}
+  </h1>
 
-  <h1 class="text-3xl md:text-5xl 2xl:text-6xl mb-[0.8em] font-extrabold mx-auto w-fit">{title}</h1>
-
-  {image?
-  <Fragment>
-    <img class="w-10/12 mx-auto aspect-video" src={image} alt={imageDescription?? title}>
-  </Fragment>
-  : null}
+  {
+    image ? (
+      <Fragment>
+        <img
+          class="w-10/12 mx-auto aspect-video"
+          src={image}
+          alt={imageDescription ?? title}
+        />
+      </Fragment>
+    ) : null
+  }
 
   <div class="flex flex-wrap justify-evenly mb-9 mt-2">
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 inline"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
       </svg>
-      <time datetime={date.toISOString()}>{date.toLocaleDateString('en-uk', { day:"numeric", month:"long", year:"numeric"})}</time>
-    </div>
-
-    <div class="flex flex-wrap gap-2">
-      {tags.map(tag =>
-      <TagButton tagName={tag} />)}
+      <time datetime={date.toISOString()}
+        >{
+          date.toLocaleDateString("en-uk", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })
+        }</time
+      >
     </div>
   </div>
 
