@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   site: "https://moofywoofy.github.io",
-  base: "/Bob-blog",
+  base: "/Bob-blog/",
   markdown: {
     shikiConfig: {
       theme: "one-dark-pro",
@@ -16,4 +16,5 @@ export default defineConfig({
     },
   },
   trailingSlash: "always",
+  scopedStyleStrategy: 'where',
 });

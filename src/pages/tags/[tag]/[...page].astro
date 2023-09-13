@@ -16,7 +16,7 @@ export async function getStaticPaths({ paginate }) {
   // For every tag, return a paginate() result.
   // Make sure that you pass `{params: {tag}}` to `paginate()`
   // so that Astro knows which tag grouping the result is for.
-  return allTags.map((tag) => {
+  return allTags.flatMap((tag) => {
     const filteredPosts = sortDateDescending(allPosts.filter((post) => {
       return post.frontmatter.tags.find(ele => ele === tag) && post.frontmatter.draft != true
     }));
