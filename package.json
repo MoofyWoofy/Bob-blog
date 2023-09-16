@@ -19,8 +19,7 @@
     "node-html-parser": "^5.3.3",
     "postcss": "^8.4.14",
     "reading-time": "^1.5.0",
-    "tailwindcss": "^3.1.6",
-    "theme-change": "^2.1.0"
+    "tailwindcss": "^3.1.6"
   },
   "dependencies": {
     "fuse.js": "^6.6.2"
