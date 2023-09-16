@@ -22,7 +22,7 @@ const description = content.frontmatter.description || parse(await content.compi
   <Fragment>
     <figure class="pt-4 sm:pt-0 rounded">
       <img width="300" height="200" loading={lazyLoading? "lazy" : "eager"} class="m-2 max-w-[300px] max-h-[200px] aspect-video"
-        src={content.frontmatter.image} alt={content.frontmatter.imageDescription?? content.frontmatter.title}>
+        src={content.frontmatter.image} alt={content.frontmatter.imageDescription?? content.frontmatter.title} transition:name={content.frontmatter.image}>
     </figure>
   </Fragment>
   : null}

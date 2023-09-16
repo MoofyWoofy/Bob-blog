@@ -20,7 +20,7 @@ const date = new Date(content.date);
 
   {image?
   <Fragment>
-    <img class="w-10/12 mx-auto aspect-video" src={image} alt={imageDescription?? title}>
+    <img class="w-10/12 mx-auto aspect-video" src={image} alt={imageDescription?? title} transition:name={image}>
   </Fragment>
   : null}
 

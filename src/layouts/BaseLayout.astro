@@ -57,7 +57,7 @@ const { metaData: { authorName } } = config;
           <NavListItem navLink={ele.link} activeLink={activeLink} icon={ele.icon} />)}
           <li>
             <!-- Theme, Light/Dark mode -->
-            <label id="themeSetting" class="swap swap-rotate">
+            <label id="themeSetting" class="swap swap-rotate" transition:persist>
               <!-- this hidden checkbox controls the state -->
               <input type="checkbox" />
               <!-- sun icon -->
@@ -253,6 +253,7 @@ const { metaData: { authorName } } = config;
   function setTheme(){
     const theme = localStorage['theme'] || document.querySelector('html').getAttribute('data-theme');
     document.querySelector('html').setAttribute('data-theme',theme);
+    
     if (theme === 'cmyk') {
       document.querySelector<HTMLInputElement>('#themeSetting > input').checked = true;
       } else {
@@ -272,4 +273,5 @@ const { metaData: { authorName } } = config;
   })
   setTheme();
 
+  document.addEventListener('astro:after-swap', setTheme);
 </script>

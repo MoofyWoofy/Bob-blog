@@ -7,12 +7,13 @@ import { Frontmatter, sortDateDescending, capitalizeString } from "src/misc";
 const allPosts = await Astro.glob<Frontmatter>('../pages/blog/articles/*.md');
 const posts = sortDateDescending(allPosts.filter((post) => post.frontmatter.draft != true && post.frontmatter.tags.includes('featured'))).slice(0, 3);
 const { metaData: { authorName }, social } = config;
+const baseSite = import.meta.env.BASE_URL
 ---
 
 <BaseLayout title="Home" activeLink="home">
 
 	<section class="flex flex-col sm:flex-row justify-center max-w-[90%] w-[52rem] mx-auto gap-12 mb-48">
-		<img width="200" height="200" src="images/bob.jpg" alt="avatar"
+		<img width="200" height="200" src={baseSite+"/images/bob.jpg"} alt="avatar"
 			class="rounded-md h-fit self-center justify-self-center">
 		<div class="flex flex-col flex-wrap flex-grow">
 			<h1
