@@ -261,17 +261,22 @@ const { metaData: { authorName } } = config;
     }
   }
 
-  document.querySelector('#themeSetting').addEventListener('click', () => {
-    const themeSettingInputElement = document.querySelector<HTMLInputElement>('#themeSetting > input')
-      themeSettingInputElement.checked = !(themeSettingInputElement.checked);
-      if (themeSettingInputElement.checked) {
-        localStorage['theme'] = 'cmyk';
-      } else {
-        localStorage['theme'] = 'night';
-      }
-      setTheme();
-  })
+  function clickTheme() {
+    document.querySelector('#themeSetting').addEventListener('click', () => {
+      const themeSettingInputElement = document.querySelector<HTMLInputElement>('#themeSetting > input')
+        themeSettingInputElement.checked = !(themeSettingInputElement.checked);
+        if (themeSettingInputElement.checked) {
+          localStorage['theme'] = 'cmyk';
+        } else {
+          localStorage['theme'] = 'night';
+        }
+        setTheme();
+    })
+  }
+
+  clickTheme();
   setTheme();
 
   document.addEventListener('astro:after-swap', setTheme);
+  document.addEventListener('astro:after-swap', clickTheme);
 </script>
