@@ -51,9 +51,13 @@ const baseSite = import.meta.env.BASE_URL
 <link rel="shortcut icon" href={baseSite + icon} type="image/x-icon">
 
 <script is:inline>
-  if (localStorage.theme === 'night' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.querySelector('html').setAttribute('data-theme', 'night');
-  } else {
-    document.querySelector('html').setAttribute('data-theme', 'cmyk');
+  function setDataThemeAttribute(){
+    if (localStorage.theme === 'night' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.querySelector('html').setAttribute('data-theme', 'night');
+    } else {
+      document.querySelector('html').setAttribute('data-theme', 'cmyk');
+    }
   }
+  setDataThemeAttribute();
+  document.addEventListener('astro:after-swap', setDataThemeAttribute);
 </script>
